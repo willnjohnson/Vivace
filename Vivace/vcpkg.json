@@ -1,0 +1,8 @@
+{
+    "name": "vivace",
+    "version-string": "0.1.0",
+    "builtin-baseline": "79d6f37a28b94ef70f25b0418e55316cf40ee1ef",
+    "dependencies": [
+        "sqlite3"
+    ]
+}
