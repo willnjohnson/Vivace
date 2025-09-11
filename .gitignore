@@ -1,67 +1,24 @@
-# Visual Studio Solution and Project Files
-.vs/
-*.suo
-*.user
-*.userprefs
-*.sln.docstates
-*.vcxproj.user
-
-# Build Artifacts
-Debug/
-Release/
-x64/
-Win32/
-ARM/
-ARM64/
-ipch/
-*.obj
-*.ilk
-*.pdb
-*.tlog
-*.lastbuildstate
-*.aps
-*.bsc
-*.sbr
-*.res
-*.pch
-*.idb
-*.opt
-*.ncb
-*.opendb
-*.sdf
-*.cache
-*.exp
-*.lib
-*.dll
-*.exe
-
-# Visual Studio Code specific (if used)
-.vscode/
-
-# NuGet packages (if used)
-packages/
-
-# ReSharper generated files
-_ReSharper.*/
-*.DotSettings.user
-
-# CMake generated files (if used)
-CMakeLists.txt.user
-CMakeCache.txt
-CMakeFiles/
-Makefile
-cmake_install.cmake
-install/
-build/
-
-# Miscellaneous
+# Logs
+logs
 *.log
-*.tmp
-*.bak
-*.old
-*.vsp
-*.vsps
-*.vssscc
-*.vssscc.bak
-*.vspscc
-*.vspscc.bak
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

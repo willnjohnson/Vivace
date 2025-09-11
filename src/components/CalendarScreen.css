@@ -1,0 +1,140 @@
+.calendar-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.calendar-content {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.time-display-large {
+  font-size: 8rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.date-display {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 3rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  opacity: 0.9;
+}
+
+.revolutionary-calendar {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.revolutionary-date {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.revolutionary-info {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.additional-calendars {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.calendar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+.calendar-system {
+  font-weight: 600;
+  color: #87ceeb;
+}
+
+.calendar-date-small {
+  font-weight: 400;
+}
+
+.calendar-additional {
+  font-style: italic;
+  opacity: 0.7;
+  margin-left: 0.5rem;
+}
+
+.interaction-hint {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.6;
+  font-size: 1.1rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .time-display-large {
+    font-size: 5rem;
+  }
+  
+  .date-display {
+    font-size: 1.8rem;
+  }
+  
+  .revolutionary-date {
+    font-size: 1.4rem;
+  }
+  
+  .revolutionary-info {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-display-large {
+    font-size: 3.5rem;
+  }
+  
+  .date-display {
+    font-size: 1.4rem;
+  }
+  
+  .calendar-content {
+    padding: 1rem;
+  }
+}
