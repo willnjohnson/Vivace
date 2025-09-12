@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { invoke } from '@tauri-apps/api/core';
+import { register, unregister } from '@tauri-apps/plugin-global-shortcut';
 import CalendarScreen from './components/CalendarScreen';
 import LoginScreen from './components/LoginScreen';
 import './App.css';
@@ -30,8 +31,23 @@ function App() {
 
   useEffect(() => {
     loadInitialData();
-    setupGlobalHotkeys();
+    
+    // Cleanup function for hotkeys
+    return () => {
+      cleanupGlobalHotkeys();
+    };
   }, []);
+
+  // Set up global hotkeys when settings are loaded
+  useEffect(() => {
+    if (settings) {
+      setupGlobalHotkeys();
+    }
+    
+    return () => {
+      cleanupGlobalHotkeys();
+    };
+  }, [settings]);
 
   const loadInitialData = async () => {
     try {
@@ -66,18 +82,62 @@ function App() {
     }
   };
 
-  const setupGlobalHotkeys = () => {
+  const setupGlobalHotkeys = async () => {
+    try {
+      // Clean up any existing hotkeys first
+      await cleanupGlobalHotkeys();
+      
+      // Get the hotkey combination from settings or use default
+      const hotkeyCombo = settings?.hotkey_combination || 'Alt+L';
+      
+      console.log(`Setting up global hotkey: ${hotkeyCombo}`);
+      
+      // Register the global hotkey
+      await register(hotkeyCombo, () => {
+        console.log('Global hotkey triggered - showing window');
+        setCurrentScreen('calendar');
+        showWindow();
+      });
+      
+      console.log(`Global hotkey ${hotkeyCombo} registered successfully`);
+      
+    } catch (error) {
+      console.error('Failed to register global hotkey:', error);
+      
+      // Fallback to document listener if global hotkey fails
+      setupFallbackHotkeys();
+    }
+  };
+
+  const cleanupGlobalHotkeys = async () => {
+    try {
+      const hotkeyCombo = settings?.hotkey_combination || 'Alt+L';
+      await unregister(hotkeyCombo);
+      console.log(`Global hotkey ${hotkeyCombo} unregistered`);
+    } catch (error) {
+      // It's okay if unregister fails - the hotkey might not have been registered
+      console.log('No global hotkey to unregister or unregister failed:', error);
+    }
+  };
+
+  // Fallback hotkey implementation (only works when app is focused)
+  const setupFallbackHotkeys = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // ALT + L to show lock screen
       if (e.altKey && e.key.toLowerCase() === 'l') {
         e.preventDefault();
+        console.log('Fallback hotkey triggered - showing window');
         setCurrentScreen('calendar');
         showWindow();
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    
+    // Store cleanup function
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   };
 
   const showWindow = async () => {
@@ -124,8 +184,6 @@ function App() {
       </div>
     );
   }
-
-  // Remove the hidden state check - we handle hiding at the window level
 
   return (
     <div

@@ -241,7 +241,7 @@ fn convert_to_julian(date: &DateTime<Local>) -> String {
     let gregorian_date = date.naive_local().date();
     let julian_offset = 13; // Approximate offset for 21st century
     let julian_date = gregorian_date - chrono::Duration::days(julian_offset);
-    julian_date.format("%B %d, %Y (Julian)").to_string()
+    julian_date.format("%B %d, %Y").to_string()
 }
 
 fn convert_to_buddhist(date: &DateTime<Local>) -> String {
@@ -766,6 +766,11 @@ pub fn run() {
                         .build(),
                 )?;
             }
+            
+            // Initialize global shortcut plugin on desktop platforms only
+            #[cfg(desktop)]
+            app.handle().plugin(tauri_plugin_global_shortcut::Builder::new().build())?;
+            
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![

@@ -53,7 +53,6 @@ const CalendarScreen: React.FC<CalendarScreenProps> = ({ onProceed }) => {
     }
   }, []);
 
-
   useEffect(() => {
     // Load user settings on component mount
     loadUserSettings();
@@ -71,6 +70,28 @@ const CalendarScreen: React.FC<CalendarScreenProps> = ({ onProceed }) => {
       loadOtherCalendarDates();
     }, 60000);
 
+    // Calculate milliseconds until next midnight for precise date updates
+    const now = new Date();
+    const tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0);
+    const msUntilMidnight = tomorrow.getTime() - now.getTime();
+
+    // Set up midnight update for calendar dates
+    const midnightTimeout = setTimeout(() => {
+      console.log('Midnight reached - updating calendar dates');
+      loadOtherCalendarDates(); // Update immediately at midnight
+      
+      // Then set up daily midnight updates
+      const dailyMidnightInterval = setInterval(() => {
+        console.log('Daily midnight update - refreshing calendar dates');
+        loadOtherCalendarDates();
+      }, 24 * 60 * 60 * 1000); // Every 24 hours
+
+      // Store the interval ID for cleanup
+      return dailyMidnightInterval;
+    }, msUntilMidnight);
+
     // Add event listeners for any key press or click
     const handleInteraction = () => {
       onProceed();
@@ -82,6 +103,7 @@ const CalendarScreen: React.FC<CalendarScreenProps> = ({ onProceed }) => {
     return () => {
       clearInterval(timeInterval);
       clearInterval(calendarInterval);
+      clearTimeout(midnightTimeout);
       document.removeEventListener('keydown', handleInteraction);
       document.removeEventListener('click', handleInteraction);
     };
@@ -121,7 +143,6 @@ const CalendarScreen: React.FC<CalendarScreenProps> = ({ onProceed }) => {
       timeOptions.hour12 = false;
     }
 
-
     mainTimeDisplay = currentTime.toLocaleTimeString('en-US', timeOptions);
 
     // Determine date format options
@@ -153,7 +174,6 @@ const CalendarScreen: React.FC<CalendarScreenProps> = ({ onProceed }) => {
       hour12: false, // Default to 24-hour for fallback
     });
   }
-
 
   // Find French Revolutionary calendar info
   const frenchRevolutionaryInfo = calendarDates.find(
