@@ -293,12 +293,7 @@ fn convert_to_french_revolutionary(date: &DateTime<Local>) -> (String, String) {
 
     let date_str = format!("{} {}, An {}", month_name, day_in_month, revolutionary_year);
 
-    // Use your existing items mapping
-    let item = if month_index < 12 {
-        get_french_revolutionary_item(month_index, day_in_month)
-    } else {
-        format!("{}", day_in_month)
-    };
+    let item = get_french_revolutionary_item(month_index, day_in_month);
 
     (date_str, item)
 }
