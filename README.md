@@ -1,12 +1,12 @@
 # Vivace
 <img width="208" height="208" alt="Vivace" src="https://github.com/user-attachments/assets/8ba8384a-6a62-4c98-acac-6c67cad173e8" />
 
-Vivace is a **customizable lock screen** built with **React + TypeScript + Vite**, powered by **Tauri** for native desktop integration, primarily to show different calendar dates.
+Vivace is a lively **customizable lock screen** built with **React + TypeScript + Vite**, powered by **Tauri** for native desktop integration, primarily to show different calendar dates.
 It runs as a lightweight desktop app and stores user preferences in `%APPDATA%\Vivace\settings.json`.
 
 I use it as my personal lockscreen, because I don't like Windows `¯\_(ツ)_/¯`
 
-Plus, I wanted to learn a bit of Rust
+Plus, I wanted to learn a bit of Rust.
 
 ---
 
@@ -16,17 +16,23 @@ I don't plan to add anything else since I have everything I want (unless I get b
 
 ![vivace_preview](https://github.com/user-attachments/assets/665ceaa6-9710-444c-9441-a239a586217d)
 
-#### Multi-Calendar Support
-<img width="468" alt="image" src="https://github.com/user-attachments/assets/cb2e0f67-d013-4cb4-aa9e-d395e4fc691d" />
+### Multi-Calendar Support
+<img width="480" alt="image" src="https://github.com/user-attachments/assets/9bcca530-8e43-475d-a698-f4b66a71269e" />
 
 **Calendars**
 - Gregorian (default)
-- French Revolutionary
+- French Revolutionary *(Vive l’app Vivace!)*
 - Julian
 - Buddhist
 - Hebrew
 
 (Feel free to suggest other calendars)
+
+### Customizable Profile Icon
+<img width="480" alt="image" src="https://github.com/user-attachments/assets/b27329ba-3b2c-405d-9212-1c01bfecc1d4" />
+
+Set your own avatar from settings.json in AppData/Roaming/Vivace:
+`"avatar_path": <avatar-path.png>`
 
 ## For Development
 
