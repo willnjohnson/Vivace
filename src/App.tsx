@@ -67,7 +67,7 @@ function App() {
         background_type: 'gradient',
         background_value: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         avatar_path: null,
-        enabled_calendars: ['gregorian', 'french_revolutionary'],
+        enabled_calendars: ['gregorian', 'french_revolutionary', 'julian', 'buddhist', 'jewish'],
         timeout_minutes: 1,
         hotkey_combination: 'Alt+L',
         auto_lock_enabled: null,

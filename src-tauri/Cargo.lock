@@ -4,10 +4,11 @@ version = 3
 
 [[package]]
 name = "Vivace"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "chrono",
  "dirs 5.0.1",
+ "lazy_static",
  "log",
  "serde",
  "serde_json",

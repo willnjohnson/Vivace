@@ -1,7 +1,7 @@
 # Vivace
 <img width="208" height="208" alt="Vivace" src="https://github.com/user-attachments/assets/8ba8384a-6a62-4c98-acac-6c67cad173e8" />
 
-Vivace is a **customizable lock screen** built with **React + TypeScript + Vite**, powered by **Tauri** for native desktop integration.
+Vivace is a **customizable lock screen** built with **React + TypeScript + Vite**, powered by **Tauri** for native desktop integration, primarily to show different calendar dates.
 It runs as a lightweight desktop app and stores user preferences in `%APPDATA%\Vivace\settings.json`.
 
 I use it as my personal lockscreen, because I don't like Windows `¯\_(ツ)_/¯`
@@ -75,7 +75,8 @@ Example `settings.json`:
     "french_revolutionary",
     "gregorian",
     "julian",
-    "buddhist"
+    "buddhist",
+    "jewish"
   ],
   "timeout_minutes": 1,
   "hotkey_combination": "Alt+L",
