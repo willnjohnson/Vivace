@@ -33,7 +33,7 @@ I don't plan to add anything else since I have everything I want (unless I get b
 Clone and install dependencies:
 
 ```bash
-git clone https://github.com/<your-org>/Vivace.git
+git clone https://github.com/willnjohnson/Vivace.git
 cd Vivace
 npm install
 ```
