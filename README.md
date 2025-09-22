@@ -10,10 +10,23 @@ Plus, I wanted to learn a bit of Rust
 
 ---
 
-I don't plan to add anything else since I have everything I want, but contributions are gladly welcome.
+I don't plan to add anything else since I have everything I want (unless I get bored, I guess), but contributions are gladly welcome.
 
 ## Preview
+
 ![vivace_preview](https://github.com/user-attachments/assets/665ceaa6-9710-444c-9441-a239a586217d)
+
+#### Multi-Calendar Support
+<img width="468" alt="image" src="https://github.com/user-attachments/assets/cb2e0f67-d013-4cb4-aa9e-d395e4fc691d" />
+
+**Calendars**
+- Gregorian (default)
+- French Revolutionary
+- Julian
+- Buddhist
+- Hebrew
+
+(Feel free to suggest other calendars)
 
 ## For Development
 
